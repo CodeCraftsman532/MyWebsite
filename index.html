@@ -1,26 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 20%;
-            background-color: #f0f0f0;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clicker Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <p>Welcome to your first HTML page.</p>
-    <script>
-        console.log('Hello World from JavaScript!');
-    </script>
+  <header>
+    <h1>Clicker Game</h1>
+  </header>
+
+  <button id="close" onclick="closeShopAndSettings()">X</button>
+
+  <main>
+    <div id="game-area">
+      <p id="count">0</p>
+      <button id="clicker" onclick="onClick()">Click Me!</button>
+      <div id="info">
+        <p id="click-power">Click Power: 1</p>
+        <p id="auto-power">Auto Click Power: 0</p>
+        <p id="auto-delay">Auto Click Delay: 1000</p>
+      </div>
+    </div>
+
+    <div id="shop">
+      <h2>Shop</h2>
+      <button class="upgrade" onclick="upgradeClick(1, 10)">$10: Increase Click Power by 1</button>
+      <button class="upgrade" onclick="upgradeClick(2, 20)">$20: Increase Click Power by 2</button>
+      <button class="upgrade" onclick="upgradeClick(5, 50)">$50: Increase Click Power by 5</button>
+      <button class="upgrade" onclick="upgradeClick(10, 100)">$100: Increase Click Power by 10</button>
+      <button class="upgrade" onclick="upgradeClick(20, 200)">$200: Increase Click Power by 20</button>
+      <button class="upgrade" onclick="upgradeAuto(1, 20)">$20: Increase Auto Click Power by 1</button>
+      <button class="upgrade" onclick="upgradeAuto(2, 50)">$50: Increase Auto Click Power by 2</button>
+      <button class="upgrade" onclick="upgradeAuto(5, 100)">$100: Increase Auto Click Power by 5</button>
+      <button class="upgrade" onclick="upgradeAuto(10, 200)">$200: Increase Auto Click Power by 10</button>
+      <button class="upgrade" onclick="upgradeAutoDelay(0.9, 50)">$50: Multiply Auto Click Delay by 0.9</button>
+      <button class="upgrade" onclick="upgradeAutoDelay(0.8, 100)">$100: Multiply Auto Click Delay by 0.8</button>
+      <button class="upgrade" onclick="upgradeAutoDelay(0.7, 200)">$200: Multiply Auto Click Delay by 0.7</button>
+    </div>
+
+    <div id="settings">
+      <h2>Settings</h2>
+      <button id="reset" onclick="resetGame()">Reset Game</button>
+      <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+      <label for="darkModeToggle">Dark Mode</label>
+      <input id="code" placeholder="Type you cheat code here: " onkeyup="if (event.key === 'Enter') {codeSubmission()}">
+      <ul id="cheatCodeList"></ul>
+    </div>
+  </main>
+
+  <div id="toggleButtons">
+    <button id="toggle-shop" onclick="toggleShop()">Open Shop</button>
+    <button id="settings-toggle" onclick="toggleSettings()">Open Settings</button>
+  </div>
+  <div id="infoBox"></div>
+  
+  <script src="script.js"></script>
 </body>
 </html>

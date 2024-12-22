@@ -1,0 +1,295 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header {
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  height: 65px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+}
+
+#game-area {
+  text-align: center;
+}
+
+#count {
+  font-size: 4rem;
+  margin-bottom: 10px;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+#count.insufficient {
+  animation: flashRed 0.3s ease;
+}
+
+@keyframes flashRed {
+  0%, 100% { color: #333; transform: scale(1); }
+  50% { color: red; transform: scale(1.2); }
+}
+
+#clicker {
+  width: 200px;
+  height: 100px;
+  font-size: 1.5rem;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+#button:active {
+  transform: scale(1.1);
+  background-color: #45a049;
+}
+
+#info {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* #shop::-webkit-scrollbar {
+  width: 10px;
+}
+
+#shop::-webkit-scrollbar-track {
+  background-color: #e8e8e8;
+}
+
+#shop::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  height: 10px;
+} */
+
+#shop::-webkit-scrollbar {
+  display: none;
+}
+
+#shop {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #e8e8e8;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  overflow: scroll;
+}
+
+#shop h2 {
+  margin-bottom: 15px;
+}
+
+#shop button {
+  display: block;
+  width: 100%;
+  height: 75px;
+  overflow-y: hidden;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: navy;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#shop .upgrade.disabled {
+  opacity: 0.2;
+}
+
+#shop.visible {
+  transform: translateX(300px);
+}
+
+#settings.visible #code {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#settings {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 100%;
+  height: 100%;
+  background-color: #f4f4f4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+#settings.visible {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+#settings.visible h2 {
+  margin-bottom: 15px;
+}
+
+#settings.visible label {
+  font-size: 1.5rem;
+  color: black;
+}
+
+#settings.visible button {
+  display: block;
+  width: 100%;
+  height: 75px;
+  overflow-y: hidden;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: navy;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#settings.visible #darkModeToggle {
+  margin-top: 15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#close:hover {
+  background-color: #555;
+}
+
+#close:active {
+  background-color: black;
+}
+
+#toggleButtons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#toggleButtons button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#toggleButtons button:hover {
+  background-color: #555;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: #f9f9f9;
+}
+
+.dark-mode #count {
+  color: white
+}
+
+.dark-mode #button {
+  background-color: #555;
+}
+
+.dark-mode #shop {
+  background-color: #444;
+}
+
+.dark-mode #settings {
+  background-color: #555;
+}
+
+.dark-mode #settings label {
+  color: white;
+}
+
+#auto-power.active {
+  animation: flashGreen 0.3s ease;
+}
+@keyframes flashGreen {
+  0%, 100% { color: #333; }
+  50% { color: green; }
+}
+
+#infoBox {
+  position: fixed;
+  top: 70px;
+  right: -200px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 1s ease, right 0.5s ease;
+  z-index: 1;
+}
+
+#infoBox.visible {
+  opacity: 1;
+  right: 10px;
+}
